@@ -1,0 +1,54 @@
+<!-- 
+ not array but iterable, used queryselectorall
+ used flex
+ not good to use prompt for admin recognition => diff way needed
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        .wrapper{
+            display: flex;
+            width:100%;
+            margin: 20px 20px;
+            justify-content: space-between;
+        }
+        .btn{
+            width:100px;
+            height:100px;
+            background-color: #666;
+            display:none;
+        }
+        .btn.active{
+            display:block;
+        }
+    </style>
+
+    <script>
+        window.onload = ()=>{
+            let id = prompt("id");
+            if (id == "admin"){
+                let btns = document.querySelectorAll(".btn");
+                
+                btns.forEach(btn => {
+                    btn.classList.add("active");
+                })
+            }
+        }
+        
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="btn">Button</div>
+        <div class="btn">Button</div>
+        <div class="btn">Button</div>
+    </div>
+    
+</body>
+</html>

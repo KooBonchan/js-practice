@@ -1,0 +1,80 @@
+<!--
+    dom manipulation, using flexbox
+    ==> dynamic generate by backend
+        1. logic hiding
+        2. client-side load reducing?
+    
+    not window.onload, 
+    but just event handler to handle code
+    ==> mocking the server behavior
+        so that dynamic change only occur in handler.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin : 0 0;
+            padding: 0;
+        }
+        .btn{
+            width:200px;
+            height:100px;
+            background-color: #200;
+        }
+        .wrapper{
+            display: flex;
+            flex-wrap: wrap;
+            width: 100vw;
+            justify-content: space-between;
+        }
+    </style>
+
+    <script>
+
+        window.onload = ()=>{
+            let get = document.getElementById("get");
+            get.addEventListener("click", (e)=>{
+                //somehow getmessage with query
+                let content = "";
+                content += "<table border='1'>";
+                content += "<tr> \
+                    <th>num</th> \
+                    <th>title</th> \
+                    <th>date</th> \
+                </tr>"
+
+                for(i = 0; i < 3; i++){
+                    content += " \
+                    <tr> \
+                        <td>" + i + "</td> \
+                        <td>Hello</td> \
+                        <td>10-15</td> \
+                    </tr>";
+                }
+
+                content += "</table>"
+                setTimeout(() => {
+                    document.getElementById("result").innerHTML = content;
+                }, 400);
+                
+            });
+        }
+    </script>   
+</head>
+<body>
+    <div class = "btn" id="get">
+
+    </div>
+    
+
+    <div class="wrapper">
+        <div id="result"></div>
+    </div>
+
+</body>
+</html>
