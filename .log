@@ -4,3 +4,34 @@ alert
 console.log -- good
 
 yes, js had promise for async handler, async await for syntactic sugar!
+
+241016
+
+Constructor Function
+    1. functions are effectively first-class object
+    2. auto create prototype field
+        -- serves as all methods-fields--...
+        -- implemented by dictionary
+        -- namespace itself as an object
+    3. this. refers the prototype
+    
+function Parent(item) {this.item = item}
+Parent.prototype.doThing = function (){}
+    => inherit by this
+
+function Child(item){
+    Parent.call(this, item)
+}   // calling super constructor function
+Child.prototype = Object.create(Parent.prototype);
+    // copy parent prototype => pseudo-inherit
+Child.prototype.constructor = Child;
+    // set constructor diff from parent
+----- this level, inheritance is done ------
+Child.prototype. ... // modify any field --> inherit structure
+
+
+Class
+    syntactic sugar for prototype based thing
+
+
+-- js array implemented in list -- push pop works -> stack

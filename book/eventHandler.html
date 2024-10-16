@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div{
+            width:200px;
+            height:100px;
+            text-align: center;
+            background-color: skyblue;
+        }
+    </style>
+    <script>
+        const changeText = (obj) => {
+            obj.innerHTML = "Now you see me"
+        }
+        const toRed = (obj) => {
+            obj.style.backgroundColor = "red"
+        }
+        const toSkyBlue = (obj) => {
+            obj.style.backgroundColor = "skyblue"
+        }
+        const opacityDown = (obj, event) => {
+            let delta = 0;
+            if (event.wheelDelta) {
+                // For older browsers (e.g., IE)
+                delta = event.wheelDelta; // Positive for scroll up, negative for scroll down
+            } else if (event.detail) {
+                // For Firefox
+                delta = -event.detail; // Negative for scroll up, positive for scroll down
+            }
+            obj.style.opacity = 0.6;
+        }
+    </script>
+</head>
+<body>
+
+    <h2 onclick="changeText(this)">Click!</h2>
+    <div onmouseover="toRed(this)"
+        onmouseout="toSkyBlue(this)"
+        onmousewheel="opacityDown(this, event)">
+        Hover mouse
+    </div>
+    
+</body>
+</html>

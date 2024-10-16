@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function tag(string, ...values){
+            return string.reduce((acc, str, idx) => {
+                let index = idx - 1;
+                return acc + str +
+                    (values[index] === undefined ? '' : "<b>" + values[index] + "</b>")
+            })
+        }
+
+
+        let content = tag`hello ${31} i am ${2} not ${223} broken `
+        document.write(content)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

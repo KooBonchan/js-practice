@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{
+            margin: 0 auto;
+            padding: 0;
+            list-style: none;
+        }
+        a{
+            color:inherit;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            height:100%;
+        }
+        .btn{
+            background-color: #3af;
+            width:200px;
+            height:100px;
+        }
+        .btn a{
+            line-height:30px;
+            font-size:30px;
+
+            display:flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-bar{
+            margin-top:10px;
+            display:flex;
+            width:700px;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .btn-bar .btn{
+            width: 100px;
+        }
+    </style>
+    <script>
+        let popup;
+        function printWinSize(){
+            let content = '';
+            let board = document.getElementById("board");
+            content += `
+                <p><h1>Total screen</h1>
+                Screen width : ${screen.width}px<br>
+                Screen height: ${screen.height}px<br></p>
+
+                <p><h1>screen except the taskbar</h1>
+                Screen width : ${screen.availWidth}px<br>
+                Screen height: ${screen.availHeight}px<br></p>
+                
+                <p><h1>total browser</h1>
+                Screen width : ${window.outerWidth}px<br>
+                Screen height: ${window.outerHeight}px<br></p>
+                
+                <p><h1>screen except the taskbar</h1>
+                Screen width : ${window.innerWidth}px<br>
+                Screen height: ${window.innerHeight}px<br></p>
+
+                <p><h3>Browser info</h3>
+                header : ${navigator.userAgent}<br>
+                platform : ${navigator.platform} ${navigator.product}<br>
+                
+                </p>
+                `;
+            if(board !== undefined){
+                board.innerHTML = content;
+            }
+            else{
+                document.write(content);
+            }
+        }
+        window.addEventListener("resize",printWinSize)
+        window.onload = () => {
+            document.getElementById("target").addEventListener("click", (e) => {
+                if(popup === undefined){
+                    popup = window.open("constructorFunction.html", "popup",
+                        "width=300, height=300, left=600, top=100, scrollbars=no");
+                }
+                else{
+                    popup.resizeTo(250,200);
+                    popup.focus()
+                }
+            });
+            
+            document.getElementById("redirect").addEventListener("click", e => {
+                location.replace("https://www.naver.com")
+            })
+            document.getElementById("back").addEventListener("click", e =>{
+                history.back();
+            })
+            document.getElementById("backtoback").addEventListener("click", e =>{
+                history.go(-1);
+            })
+        }
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="btn" id="target">
+            <a href="#">Popup</a>    
+        </div>
+        <div class="btn-bar">
+            <div class="btn" id="redirect">
+                <a href="#">redirect</a>    
+            </div>
+            <div class="btn" id="back">
+                <a href="#">back</a>    
+            </div>
+            <div class="btn" id="backtoback">
+                <a href="#">back2back</a>    
+            </div>
+        </div>
+    </div>
+    
+
+    <div id="board">
+
+
+    </div>
+
+
+    
+</body>
+</html>

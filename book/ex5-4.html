@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>    
+    <script>
+        const state = {
+            message: null,
+        }
+        function updateState(code, message){
+            if(code == 200){
+                state.message = message;
+            }
+            document.dispatchEvent(
+                new CustomEvent(
+                    'serverResponse'
+                )
+            )
+        }
+        document.addEventListener('serverResponse', (e) => {
+            document.write(state.message);
+        })
+
+        async function loadObj(_) {
+            await setTimeout(() => {}, 400);
+            content = "";
+            updateState(200,content);
+        }
+    </script>
+</head>
+<body>
+    <div class="btn" id="initiate"></div>
+    <content class="wrapper">
+
+    </content>
+
+
+    <script>
+        document.getElementById("initiate").addEventListener("mouseover",await loadObj);
+    </script>
+</body>
+</html>
