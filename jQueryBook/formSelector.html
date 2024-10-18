@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../src/jquery-3.7.1.min.js"></script>
+    <style>
+        *{
+            margin:0 auto;
+            padding: 0;
+            list-style: none;
+        }
+        .wrapper{
+            width: 640px;
+            background-color: #eee;
+            padding:10px;
+        }
+        .wrapper *{
+            margin:0;
+            font-size:20px;
+            line-height:20px;
+        }
+
+        #title{
+            width:fit-content;
+            margin-left:20px;
+            margin-bottom:10px;
+        }
+        input:focus{
+            border:none;
+            box-shadow: #ccc 10px inset;
+        }
+
+        .field{
+            margin:5px 20px;
+            display:grid;
+            min-height:30px;
+            grid-template-columns: 1fr 4fr;
+        }
+        .field label{
+            display:flex;
+            align-items: center;
+        }
+        .field input{
+            width: 100%;
+            border:none;
+        }
+
+        .email-wrapper{
+            display:flex;
+            width:100%;
+            justify-content: space-between;
+        }
+        
+        .email-wrapper input{
+            width:50%
+        }
+        .email-wrapper select{
+            font-size:20px;
+            width:30%
+        }
+
+        .gender{
+            display:flex;
+            justify-content: left;
+            align-items: center;
+        }
+        .gender input{
+            width:fit-content;
+            margin-left:5px;
+            margin-right:20px;
+        }
+
+        .checkbox-wrapper{
+            display: flex;
+            height:auto;
+            align-items: center;
+            flex-wrap:wrap;
+        }
+        .checkbox-item{
+            width:120px;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            gap:5px;
+        }
+        .checkbox-item input{
+            width:fit-content;
+        }
+
+        .btn-bar{
+            display:flex;
+            justify-content: right;
+            margin-top:20px;
+            gap:5px;
+        }
+        .btn-bar .btn{
+            width:100px;
+            height:30px;
+            line-height:25px;
+            font-size:25px;
+            border: none;
+        }
+        #submit{
+            background-color: #99f;
+        }
+        #reset{
+            background-color: #ddd;
+        }
+
+    </style>
+    <script>
+        $(()=>{
+            $('#submit').mouseover((e)=>{
+                setTimeout(()=>{
+                    $(":text, :password").val('')
+                    $(e.currentTarget).slideUp(800)
+                },200)  
+            })
+            $('#reset').mouseover((e)=>{
+                $('#submit')
+                    .slideDown(100)
+            })
+
+            $(':radio:eq(1)')
+                .attr("width","30px")
+                .attr("height","30px");
+            
+            $(':checkbox:eq(3)').focus((e)=>{
+                $('#reset').trigger('click')
+            })
+            $('select').change((e)=>{
+                console.log(e.data)
+            })
+            // $('option').select((e)=>{
+            //     console.log(e.currentTarget.innerHTML)
+            //     // $('#submit').val(e.currentTarget.innerHTML)
+            // })
+        })
+    </script>
+</head>
+<body>
+    <form action="#" method="post">
+        <div class="wrapper">
+            <h1 id="title">Input form</h1>
+            <div class="field">
+                <label for="">Name</label>
+                <input type="text" name="name" id="name" autofocus>
+            </div>
+            <div class="field">
+                <label for="">Password</label>
+                <input type="password" name="password" id="password">
+            </div>
+            <div class="field">
+                <label for="">e-Mail</label>
+                <div class="email-wrapper">
+                    <input type="text" name="email-id" id="email-id">
+                    <span>@</span>
+                    <select name="email-src" id="email-src">
+                        <option value="naver" selected>naver.com</option>
+                        <option value="gmail">gmail.com</option>
+                        <option value="hanmail">hanmail.com</option>
+                    </select>
+                </div>
+            </div>
+            <div class="field">
+                <label for="gender">Gender</label>
+                <div class="gender">
+                    Male
+                    <input type="radio" name="gender" id="Male" value="1" checked>
+                    Female
+                    <input type="radio" name="gender" id="Female" value="2">
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="">Interests</label>
+                <div class="checkbox-wrapper">
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="h1">FP
+                    </div><div class="checkbox-item">
+                        <input type="checkbox" name="h1">Functor
+                    </div><div class="checkbox-item">
+                        <input type="checkbox" name="h1">Option 3
+                    </div><div class="checkbox-item">
+                        <input type="checkbox" name="h1">Option 4
+                    </div>
+                </div>
+            </div>
+
+            <div class="btn-bar footer">
+                <input type="submit" value="Submit" id="submit" class="btn">
+                <input type="reset" value="Reset" id="reset" class="btn">
+            </div>
+        </div>
+    </form>
+    
+    
+</body>
+</html>

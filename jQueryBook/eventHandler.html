@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0 auto;
+            padding:0;
+        }
+        #clicker{
+            width:200px;
+            height:100px;
+            border:1px solid black;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+        }
+        a{
+            text-decoration: none;
+            display:block;
+        }
+        .content-body{
+            background-color: aliceblue;
+        }
+        input{
+            border-width:1px;
+            border-radius:2px;
+        }
+    </style>
+    <script src="../src/jquery-3.7.1.min.js"></script>
+    <script>
+        $(()=>{
+            $('#clicker')
+                .dblclick((e)=>{
+                    $('#show').append("ㅇ")
+                })
+                .click((e)=>{
+                    $('#show').append("ㅁ")
+                })
+                .mouseleave((e)=>{
+                    $('#show').text('')
+                });
+            $('#show')
+                .mouseenter(function(e){
+                    $(this).addClass("content-body")
+                })
+                .mouseleave(function(e){
+                    $(this).removeClass("content-body")
+                })
+            $(document)
+                .keypress(function(e){
+                    String.regex
+                    if(/^[a-zA-Z0-9]$/.test(e.key)){
+                        $('#show').append(e.key)
+                    }
+                })
+                //log each key
+
+            $('input:eq(0)')
+                .keydown(function(e){
+                    $(this).css('background-color','yellow');
+                })
+                .keyup(function(e){
+                    $(this).css('background-color','white');
+                });
+            $('input:eq(1)')
+                .keypress(function(e){
+                    let opacity = $(this).css('opacity')
+                    if(opacity !== undefined){
+                        $(this).css('opacity',opacity*0.9)
+                    }else{
+                        $(this).css('opacity',1)
+                    }
+                })
+                .click(function(e){
+                    $(this).css('opacity',1)
+                })
+                //gets transparent for each keypress
+        })
+    </script>
+</head>
+<body>
+    <div id="clicker" draggable="true"><a>CLICK</a></div>
+    <div class="p" id="show"></div>
+
+    <div>
+        sample
+        <input type="text" name="id" id="id">
+    </div>
+    <div>
+        sample
+        <input type="text" name="id2" id="id2">
+    </div>
+    
+</body>
+</html>

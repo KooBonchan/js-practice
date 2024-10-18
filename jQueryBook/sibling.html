@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="../src/jquery-3.7.1.min.js"></script>
+    <script>
+        $(()=>{
+            $("#me").siblings()
+                .css("color","white")
+                .css("background-color","black")
+        })
+    </script>
+</head>
+<body>
+    <h2>Siblings</h2>
+
+    <p>Foreign</p>
+    <div>
+        <p>Neighbor1</p>
+        <span>Neighbor2</span>
+        <h3 id="me">Me</h3>
+        <h4>Neighbor4</h4>
+        <p>Neighbor5</p>
+    </div>
+</body>
+</html>

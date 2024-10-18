@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0 auto;
+            padding: 0;
+            list-style: none;
+        }
+        a{
+            text-decoration:none;
+            display:block;
+        }
+        .wrapper{
+            display:grid;
+            grid-template-columns: 1fr 3fr;
+            
+            justify-content: center;;
+        }
+        
+        nav{
+            font-size:13px;
+        }
+        nav .menu>.submenu{
+            
+            display:none;
+        }
+        footer{
+            grid-column:2;
+        }
+
+        header{
+            height:80px;
+            display:flex;
+        }
+        header .btn-wrapper{
+            display:flex;
+            flex-wrap:wrap;
+            gap:3px;
+        }
+        header .btn{
+            background-color: #777;
+            border:2px solid black;
+            width: 96px;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #target{
+            width:100%;
+            height:100%;
+            background-color:#00f
+        }
+        content{
+            width:calc(100% - 40px);
+            padding:20px;
+        }
+        .tab{
+            width:100%;
+            display:flex;
+            justify-content: left;
+        }
+        .tab li{
+            width:70px;
+            margin:0;
+            padding-left:8px;
+        }
+        .tab li.current{
+            background-color: #77f;
+        }
+        .tabdata{
+            display:none;
+            background-color: #99f;
+            padding:6px 12px;
+        }
+        .tabdata.current{
+            display:block;
+        }
+    </style>
+    <script src="../src/jquery-3.7.1.min.js"></script>
+    <script>
+        $(()=>{
+            $('.menu')
+                .mouseover(function(e){
+                    $(this).children().show()
+                })
+                .mouseleave(function(e){
+                    $(this).children().hide()
+                })
+            $("#id1").click(()=>$('#target').show())
+            $("#id2").click(()=>$('#target').hide())
+            $("#id3").click(()=>$('#target').fadeIn())
+            $("#id4").click(()=>$('#target').fadeOut())
+            $("#id5").click(()=>$('#target').slideUp())
+            $("#id6").click(()=>$('#target').slideDown())
+
+            $(".tab li").click(function(){
+                let data = $(this).attr("data-tab");
+                $(this)
+                    .addClass('current')
+                    .siblings().removeClass('current');
+                $('#'+data)
+                    .addClass('current')
+                    .siblings().removeClass('current');
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+        <div style="width:100%; height:100%">
+            <div id="target"></div>
+        </div>
+        
+        <header>
+            
+            <div class="btn-wrapper">
+                <div class="btn" id="id1">show</div>
+                <div class="btn" id="id3">fadeIn</div>
+                <div class="btn" id="id6">slideDown</div>
+                <div class="btn" id="id2">hide</div>
+                <div class="btn" id="id4">fadeOut</div>
+                <div class="btn" id="id5">slideUp</div>
+            </div>
+            
+        </header>
+        <nav>
+            <div class="menu">Main menu
+                <div class="submenu">submenu</div>
+                <div class="submenu">submenu</div>
+                <div class="submenu">submenu</div>
+            </div>
+            <div class="menu">Main menu
+                <div class="submenu">submenu</div>
+                <div class="submenu">submenu</div>
+                <div class="submenu">submenu</div>
+            </div>
+            <div class="menu">Main menu
+                <div class="submenu">submenu</div>
+                <div class="submenu">submenu</div>
+                <div class="submenu">submenu</div>
+            </div>
+        </nav>
+        <content>
+            <ul class="tab">
+                <li class="current" data-tab="tab1"><a href="#"></a>About</li>
+                <li data-tab="tab2"><a href="#"></a>History</li>
+                <li data-tab="tab3"><a href="#"></a>Stack.</li>
+                <li data-tab="tab4"><a href="#"></a>Instr.</li>
+            </ul>
+
+            <div id="tabdatas">
+                <div class="tabdata current" id="tab1">
+                    <h3>About</h3>
+                        <p>Functors are a fascinating concept in functional programming that act as a bridge between the mathematical and programming worlds. At their core, functors allow us to apply a function to values wrapped in a context, such as lists, options, or even more complex data structures. This means we can transform data without having to extract it from its container, which keeps our code neat and expressive.</p>
+                </div>
+                <div class="tabdata" id="tab2">
+                    <h3>History</h3>
+                        <p>Imagine you have a box of chocolates (the functor) and you want to add a sprinkle of magic (a function) to each chocolate without removing them from the box. In programming terms, this means applying a function to each item in a data structure while maintaining the structure itself. For instance, in JavaScript, you can use the map() method on an array (a functor) to achieve this transformation elegantly.</p>
+                </div>
+                <div class="tabdata" id="tab3">
+                    <h3>TechStack</h3>
+                        <p>One of the key features of functors is that they adhere to certain laws: the identity law and the composition law. The identity law states that if you apply the identity function to a functor, it should return the same functor. The composition law indicates that if you apply two functions in succession, it should yield the same result as applying a single function that combines both. These laws ensure that functors behave predictably, which is essential for writing reliable code.</p>
+                </div>
+                <div class="tabdata" id="tab4">
+                    <h3>Instrumental</h3>
+                        <p>Functors are not just theoretical; they have practical applications in various programming languages. For instance, in Haskell, functors are defined in terms of the Functor type class, which provides the fmap function. In JavaScript, libraries like Ramda or Lodash also embrace the concept of functors, allowing developers to work with data in a functional style. Embracing functors can lead to cleaner, more maintainable code that is easier to reason about.</p>
+                </div>
+            </div>
+            
+
+        </content>
+        <footer></footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style> 
+        *{
+            margin:0;
+            padding:0;
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+            color:inherit;
+            display: block;
+        }
+        .wrapper{
+            width:fit-content
+        }
+
+
+        .room>li, .floor>li, .door{
+            width:120px;
+            height:50px;
+            line-height: 50px;
+            background-color: #aaa;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .room>li>a{
+            width:100%;
+            height:100%;
+        }
+
+        .room>li:hover, .floor>li:hover{
+            background-color: #888;
+        }
+
+        .floor>li{
+            text-align:center;
+            display:block;
+        }
+
+        .floor{
+            display:none;
+        }
+        .room{
+            display: none;
+            position:relative;
+            left:120px;
+            top:-50px;
+        }
+        
+    </style>
+    <script src="../src/jquery-3.7.1.min.js"></script>
+    <script>
+        $(()=>{
+            $('.door').mouseover(function(){
+                $('.floor').slideDown(120)
+            })
+            $('.wrapper').mouseleave(function(){
+                $('.room').hide()
+                $('.floor').slideUp()
+            })
+
+            $('.floor li').mouseover(function(){
+                $(this).children('.room').slideDown(120)
+            })
+            $('.floor li').mouseleave(function(){
+                $(this).children('.room').hide()
+            })
+
+
+            $('select#familysite').change(function(e){
+                const link = $(this).val();
+                if(link){
+                    setTimeout(function(){
+                        window.location.href = link
+                    }, 500)
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+    <div class="door"><h1>DOOR</h1></div>
+    <ul class="floor">
+        <li>
+            <h3>Floor 1</h3>
+            <ul class="room">
+                <li><a href="#">101</a></li>
+                <li><a href="#">102</a></li>
+                <li><a href="#">103</a></li>
+                <li><a href="#">104</a></li>
+            </ul>
+        </li>
+        <li>
+            <h3>Floor 2</h3>
+            <ul class="room">
+                <li><a href="#">201</a></li>
+                <li><a href="#">202</a></li>
+                <li><a href="#">203</a></li>
+                <li><a href="#">204</a></li>
+            </ul>
+        </li>
+        <li>
+            <h3>Floor 3</h3>
+            <ul class="room">
+                <li><a href="#">301</a></li>
+                <li><a href="#">302</a></li>
+                <li><a href="#">303</a></li>
+                <li><a href="#">304</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+    
+
+<select name="familysite" id="familysite">
+    <option value="" selected>Family site</option>
+    <option value="https://www.naver.com">naver</option>
+    <option value="https://www.google.com">google</option>
+    <option value="https://www.daum.net">daum</option>
+</select>
+
+</body>
+</html>

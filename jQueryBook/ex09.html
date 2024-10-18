@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        ul{
+            border: 1px solid #99f
+        }
+    </style>
+    <script src="../src/jquery-3.7.1.min.js"></script>
+    
+    <script>
+        $(()=>{
+            $("li:eq(0)").css("border","2px solid #f33")
+            $("li:nth-child(2n)").css("background-color","yellow")
+                .next()
+                .end().clone().appendTo($('h2'))
+        })
+    </script>
+</head>
+<body>
+    <h2>Header</h2>
+
+    <ul>
+        <li>항목1</li>
+        <li>항목2</li>
+        <li>항목3</li>
+    </ul>
+    <ul>
+        <li>항목1</li>
+        <li>항목2</li>
+        <li>항목3</li>
+    </ul>
+
+
+</body>
+</html>

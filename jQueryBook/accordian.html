@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../src/jquery-3.7.1.min.js"></script>
+    <style>
+        *{
+            padding:0;
+            margin: 0 auto;
+            list-style:none;
+        }
+        a{
+            text-decoration:none;
+            color:inherit;
+        }
+
+        .menu.current{
+            background-color: #ccc;
+        }
+        .submenu{
+            display:none;
+        }
+    </style>
+    <script>
+        $(()=>{
+            $('.menu')
+            .click(function(e){
+                $('.submenu').slideUp();
+                $(this)
+                .addClass('current')
+                .siblings().removeClass('current').end()
+                .children().last().slideDown();
+            })
+        })
+    </script>
+</head>
+<body>
+    <h1>accordian</h1>
+    <ul class="nav">
+        <li class="menu">
+            <h>menu</h>
+            <ul class='submenu'>
+                <li><a href="#">submenu</a></li>
+                <li><a href="#">submenu</a></li>
+                <li><a href="#">submenu</a></li>
+            </ul>
+        </li>
+        <li class="menu">
+            <h>menu</h>
+            <ul class='submenu'>
+                <li><a href="#">submenu</a></li>
+                <li><a href="#">submenu</a></li>
+                <li><a href="#">submenu</a></li>
+            </ul>
+        </li>
+        <li class="menu">
+            <h>menu</h>
+            <ul class='submenu'>
+                <li><a href="#">submenu</a></li>
+                <li><a href="#">submenu</a></li>
+                <li><a href="#">submenu</a></li>
+            </ul>
+        </li>
+    </ul>
+    
+
+</body>
+</html>

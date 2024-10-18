@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../src/jquery-3.7.1.min.js"></script>
+    <style>
+        .super-long-div{
+            width:1000px;
+            height:100px;
+            background-color: #0369be;
+        }
+    </style>
+    <script>
+        $(()=>{
+            $('span:eq(0)').text(window.innerWidth)
+            $('span:eq(1)').text(window.innerHeight)
+            $(window).resize(function(){
+                $('span:eq(0)').text(window.innerWidth)
+                $('span:eq(1)').text(window.innerHeight)
+            })
+            $(window).scroll(function(e){
+                $('#show').text(e.timeStamp)
+            })
+        })
+    </script>
+</head>
+<body>
+    width : <span></span><br>
+    height: <span></span>
+    <div class="super-long-div">
+
+    </div>
+    <div id="show"></div>
+
+</body>
+</html>
