@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <style>
+        a{
+            display: block;
+            text-decoration: none;
+            color:inherit;
+        }
+        .button{
+            width:100px;
+            height:100px;
+            background-color: #66f;
+        }
+        .button a{
+            width:100%;
+            height:100%;
+        }
+
+        .bordered{
+            border: 1px dashed #48f
+        }
+    </style>
+    <script>
+        $(()=>{
+            $(".button")
+            .click(()=>{
+                // $("p").css("background-color","yellow")
+                const title = $("#title").text();
+                console.log(title)
+                const titleHTML = $("#title").html();
+                console.log(titleHTML)
+                // $.val for input
+            })
+            .mouseover((e)=>{
+                // e.preventDefault();
+                $('*').addClass('bordered')
+            })
+            .mouseout(()=>{
+                $('*').removeClass('bordered')
+            })
+
+            //n starts from 0
+            //child starts from 1 ==> maybe parent be 0
+            $('ul li:nth-child(n)')
+            .click(()=>{
+                $(".content:last")
+                .addClass('bordered')
+                .insertAfter('#title')
+                .next()
+                .removeClass('bordered');
+            })
+            // $(".content").mouseover((e)=>{
+
+            //     // append, prepend : as child
+            //     // before, after : as sibling
+                
+            // })
+        })
+        $().resize()
+    </script>
+</head>
+<body>
+    <h1 id="title">Hello<span>33</span></h1>
+    <p class="content">content1</p>
+    <p class="content">content2</p>
+    
+    <ul>
+        <li>항목 3</li>
+        <li>항목 3</li>
+        <li>항목 3</li>
+    </ul>
+    <p class="content">content3</p>
+    <p class="content">content4</p>
+    <p class="content">content5</p>
+    <div class="button" id="target"><a>22</a></div>
+</body>
+</html>

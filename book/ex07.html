@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        
+        // let a = 10.53216; let b = 10;
+        // console.log(a + b);
+        // console.log(a+b.toString());
+        // console.log(Intl.NumberFormat('en-US', {
+        //     minimumFractionDigits: 2,
+        //     maximumFractionDigits: 7,
+        // }).format(a))
+
+        // let x = "10.2xx"
+        // console.log(Number(x))
+        // console.log(parseInt(x))
+        // console.log(parseFloat(x))
+
+        // let animals = ["Saza", "Horang", "Doksur", "Gom"];
+        // console.log(animals);
+        // console.log(animals.toString());
+        // animals = animals.slice(0,2);
+        // animals.push("Human");
+        // console.log(animals);
+        // console.log(animals.pop());
+
+
+        // // map vs for
+        // // use map more
+        // console.log(animals.map((e, i)=>{
+        //     return i + '|' + e
+        // }))
+        // console.log(animals)
+        // animals.push('Ebonhorn')
+        // let result = animals
+        //     .filter(e=>true)
+        //     .splice(1)
+        //     .flatMap(e => e.split(''))
+        //     .reduce((acc, e, i,arr)=>{
+        //         if(i%2==0){
+        //             acc.push(arr.slice(i,i+2))
+        //         }
+        //         return acc
+        //     }, [])
+
+        // let str = "2024/10/17".split("/")
+
+        // console.log(`Year: ${str[0]}`)
+        // console.log(`Year: ${str[1]}`)
+        // console.log(`Year: ${str[2]}`)
+
+        let arr = [...Array(300).keys()].slice(1)
+        console.log(arr)
+        console.log(arr
+            .map(e=>Math.pow(e,2))
+            .map(e=>Math.log2(e).toFixed(3))
+            .filter(e=>e.endsWith('0'))
+        )
+
+        let d = new Date();
+        
+        console.log(`\
+${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()} \
+${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
