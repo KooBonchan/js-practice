@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a{
+            text-decoration: none;
+            color:inherit;
+            display:block;
+            width:auto;
+            height:auto;
+        }
+        .accordian dt, .accordian dd{
+            padding: 10px;
+            border-width:1px;
+            border-color: #ccc;
+            border-style: solid;
+        }
+        .accordian dt:last-of-type, .accordian dd:last-of-type{
+            border-bottom: 1px solid #ccc;
+        }
+        .accordian>dd{
+            border-width: 0 1px;
+            line-height: 150%;
+            font-size:14px;
+        }
+    </style>
+
+    <script src="../src/jquery-3.7.1.min.js"></script>
+    <script>
+        $(()=>{
+            let contents = $('.accordian > dd');
+            contents.hide();            
+            $('.accordian > dt > a').click(function(){
+                contents.slideUp();
+                $(this).parent().next().slideDown()
+            })
+        })
+    </script>
+</head>
+<body>
+    <dl class="accordian">
+        <dt><a href="#">HTML</a></dt>
+        <dd>HyperText Markup Language, the standard language for creating web pages.</dd>
+        <dt><a href="#">CSS</a></dt>
+        <dd>Cascading Style Sheets</dd>
+        <dt><a href="#">JS</a></dt>
+        <dd>Java Script </dd>
+    </dl>
+</body>
+</html>

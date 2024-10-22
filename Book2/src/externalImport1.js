@@ -1,0 +1,1 @@
+document.write('<div style="color:red;font-size:24px;">External JS File 1</div>')

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{
+            margin:0 auto;
+            padding: 0;
+            list-style:none;
+        }
+        .slider{
+            position: relative;
+            overflow:hidden;
+            margin:50px 0;
+            width: 200px;
+            height:100px;
+            
+
+        }
+        .slider ul{
+            position:relative;
+        }
+        .slider ul li{
+            position:relative;
+            float:left;
+            width:200px;
+            height:100px;
+        }
+
+        .slider .next, .slider .prev{
+            position:absolute;
+            top:25px;
+            z-index:10;
+            display:block;
+            background:#333;
+            opacity:0.6;
+            width:50px;
+            height:50px;
+        }
+        .slider a{
+            font-size:20px;
+            line-height:50px;
+            color:white;
+            display:block;
+            text-align: center;
+            text-decoration: none;
+        }
+        .next{
+            right:0;
+        }
+        .prev{
+            left:0;
+        }
+
+
+        .img-placeholder{
+            width:200px;
+            height:100px;
+            color:white;
+            line-height:100px;
+            text-align:center;
+        }
+        #img-placeholder1{
+            background-color: #600;
+        }
+        #img-placeholder2{
+            background-color: #660;
+        }
+        #img-placeholder3{
+            background-color: #006;
+        }
+
+    </style>
+    <script src="../src/jquery-3.7.1.min.js"></script>
+    <script>
+        $(()=>{
+            let slides = $(".slider ul li");
+            let length = slides.length;
+            let width = slides.width();
+            let height = slides.height();
+            let totalWidth = width * length;
+            $('.slider ul').css({
+                width: totalWidth,
+                marginLeft: -width,
+            });
+            $('.slider ul li:last-child').prependTo('.slider ul');
+
+            $('.slider .next').click(function() {
+                $('.slider ul').animate({
+                    left: + width,
+                }, 300, function(){
+                    $('.slider ul li:last-child').prependTo('.slider ul');
+                    $('.slider ul').css('left','');
+                })
+            })
+            $('.slider .prev').click(function() {
+                $('.slider ul').animate({
+                    left: - width,
+                }, 300, function(){
+                    $('.slider ul li:first-child').appendTo('.slider ul');
+                    $('.slider ul').css('left','');
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="slider">
+        <div class="button next"><a href="#" class="">></a></div>
+        <div class="button prev"><a href="#" class=""><</a></div>
+
+        <ul>
+            <li><div class="img-placeholder" id="img-placeholder1">Placeholder</div></li>
+            <li><div class="img-placeholder" id="img-placeholder2">Placeholder</div></li>
+            <li><div class="img-placeholder" id="img-placeholder3">Placeholder</div></li>
+        </ul>
+        
+    </div>
+</body>
+</html>

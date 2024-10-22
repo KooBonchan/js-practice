@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    
+</head>
+<body>
+    <p id="message1"></p>
+    <p id="message2"></p>
+    <p id="message3"></p>
+
+
+    <p id="car"></p>
+    <p id="car-speedup"></p>
+    <p id="car-speeddown"></p>
+
+    <p id="kart">
+
+    </p>
+    <script>
+        let obj = {
+            message1: ()=>"Sonata Moonlight",
+            message2: e=>e,
+            message3: (a,b)=>a+b
+        }
+
+        document.getElementById('message1').innerHTML = obj.message1();
+        document.getElementById('message2').innerHTML = obj.message2('ident');
+        document.getElementById('message3').innerHTML = obj.message3(34,565);
+
+        class Car{
+            constructor(name, speed = 0, color = 'silver'){
+                this.name  = name;
+                this.speed = speed;
+                this.color = color;
+            }
+
+            speedup(){
+                this.speed += 0;
+                return this
+            }
+            speeddown(){
+                this.speed -= 10;
+                if(this.speed < 0) this.speed = 0;
+                return this
+            }
+            toString(){
+                return `Car(${this.name}, ${this.speed}, ${this.color})`;
+            }
+        }
+        let car = new Car('Matiz',200,'red');
+        document.getElementById('car').innerHTML =
+            `Current : ${car.toString()}`;
+        document.getElementById('car-speedup').innerHTML =
+            `Speedup : ${car.speedup().toString()}`;
+        document.getElementById('car-speeddown').innerHTML =
+            `Speeddown : ${car.speeddown().toString()}`;
+
+        let kart = new Object();
+        kart.name = 'Sabre';
+        kart.speed = 100;
+        kart.color = 'red';
+        kart.speedup = function(){
+            this.speed += 100;
+            return this.speed;
+        }
+
+        let kartDOM = document.getElementById('kart')
+        kartDOM.innerText = `
+        ----------------------------------
+        Car name: ${kart.name}
+        Car speed: ${kart.speed}
+        Car color: ${kart.color}
+
+        Car SPEEDUP to ${kart.speedup()}
+        Car SPEEDUP to ${kart.speedup()}
+        Car speed: ${kart.speed}
+        ----------------------------------
+        `
+    </script>
+</body>
+</html>
