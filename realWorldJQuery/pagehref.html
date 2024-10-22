@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0 auto;
+            padding: 0;
+            list-style:none;
+        }
+        a{
+            color:inherit;
+            text-decoration: none;
+            display:block;
+        }
+
+
+        header{
+            height:120px;
+            width:100%;
+            background: #000;
+            color:#fff;
+            position:fixed;
+        }
+        nav{
+            display: flex;
+            line-height:120px;
+            font-size:35px;
+        }
+        nav a{
+            padding:0 20px;
+        }
+        nav a:hover, nav a:active{
+            color:#fcc;
+        }
+        nav a.active{
+            color:#faa;
+        }
+    </style>
+    <script src="../src/jquery-3.7.1.min.js"></script>
+    <script>
+        $(()=>{
+            $('nav a')
+                .click(function(){
+                    $(this).addClass('active')
+                    .siblings().removeClass('active');
+
+                    $('html, body').stop().animate({
+                        scrollTop:$($(this).attr('href')).offset().top - 120
+                    }, 300)
+
+                })
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <nav class="nav">
+            <a href="#paragraph1" id="menu1" class="active">text1</a>
+            <a href="#paragraph2" id="menu2">text2</a>
+            <a href="#paragraph3" id="menu3">text3</a>
+            <a href="#paragraph4" id="menu4">text4</a>
+        </nav>
+    </header>
+    <div style="height:120px;"></div>
+    <section id="paragraph1">
+        <h2>Introduction to Erlang</h2>
+        <p>Erlang is a functional programming language designed for concurrent and distributed systems. It was originally developed by Ericsson for telecommunication systems but has since gained popularity for its robustness and fault tolerance. With its built-in support for concurrency, Erlang allows developers to build scalable applications that can handle numerous simultaneous processes.
+            </p>
+    </section>
+    <section id="paragraph2">
+        <h2>Getting Started</h2>
+        <p>To start using Erlang, you need to install the Erlang/OTP platform on your machine. This can be done easily through package managers or by downloading it from the official Erlang website. Once installed, you can open the Erlang shell by typing erl in your terminal, where you can interactively execute Erlang commands and scripts.
+            </p>
+    </section>
+    <section id="paragraph3">
+        <h2>Basic Syntax</h2>
+        <p>Erlang’s syntax is straightforward yet powerful. It relies heavily on functions, which are defined using the fun keyword. Variables in Erlang are immutable, meaning once assigned, they cannot be changed. This immutability helps prevent side effects and makes reasoning about code easier.
+            </p>
+    </section>
+    <section id="paragraph4">
+        <h2>Concurrency and Processes</h2>
+        <p>One of Erlang's standout features is its lightweight process model. You can create thousands of concurrent processes without significant overhead. Each process has its own memory, allowing for safe, concurrent execution. To create a new process, you use the spawn function, which runs a specified function in a new process, enabling true parallelism in your applications.
+            </p>
+    </section>
+    <div style="height:4000px;"></div>
+</body>
+</html>

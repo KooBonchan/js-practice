@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <style>
+        *{
+            margin: 0 auto;
+            padding: 0;
+            list-style:none;
+        }
+        a{
+            display:block;
+            color:inherit;
+            text-decoration: none;
+            cursor:pointer;
+        }
+        html, body{
+            overflow: hidden;
+        }
+
+        .btn-bar{
+            position:absolute;
+            top:0;
+            right:0;
+            height:70px;
+            display:flex;
+            justify-content: right;
+        }
+        .button{
+            margin:0;
+            width:70px;
+            height:70px;
+        }
+        .button a{
+            width:100%;
+            height:100%;
+            line-height:70px;
+            font-size:45px;
+            text-align:center;
+        }
+
+        .sidebar{
+            width:200px;
+            position:absolute;
+            right:-100%;
+            top:70px;
+            box-shadow: #ccc 0 0 20px -5px;
+            z-index:999;
+            overflow-x:hidden;
+            overflow-y:auto;
+            display:block;
+        }
+        .sidebar .menu-wrapper:hover, .sidebar .submenu li:hover{
+            background-color: #bbb;
+        }
+        .sidebar .menu-wrapper.selected{
+            background-color: #ccc;
+        }
+        .sidebar .menu-wrapper{
+            display:flex;
+            justify-content:space-between;
+            font-size:20px;
+        }
+        .sidebar .menu-wrapper *{
+            margin: 0 5px;
+        }
+        .sidebar .menu-wrapper span{
+            cursor:pointer;
+
+        }
+        
+        .sidebar>li .submenu{
+            display:none;
+        }
+        .sidebar>li .submenu li{
+            padding-left:10px;
+            font-size:16px;
+        }
+
+        
+    </style>
+    <script src="../src/jquery-3.7.1.min.js"></script>
+    <script>
+        $(()=>{
+            $('#hamburger')
+                .click(function(event){
+                    event.stopPropagation();
+                    let isActive = $('.sidebar').hasClass('active');
+                    $('.sidebar')
+                        .animate({
+                            right: isActive ? '-100%' : '0',
+                        }, 400)
+                        .toggleClass('active');
+                    
+                });
+            $('.menu-wrapper span')
+                .click(function(event){
+                    let isActive = $(this).text() == '+';
+                    $(this)
+                        .text(isActive ? '--' : '+')
+                    .parent()
+                        .toggleClass('selected')
+                    .next()
+                        .slideToggle()
+                })
+        })
+    </script>
+</head>
+<body>
+    <ul class="btn-bar">
+        <li class="button" id="hamburger">
+            <a><i class="fa-solid fa-bars"></i></a>
+        </li>
+        <!-- <li class="button" id="hamburger2"></li>
+        <li class="button" id="hamburger3"></li> -->
+    </ul>
+    <ul class="sidebar">
+        <li>
+            <div class="menu-wrapper">
+                <a>MENU</a>
+                <span>+</span>
+            </div>
+            <ul class="submenu">
+                <li>SUBMENU</li>
+                <li>SUBMENU</li>
+                <li>SUBMENU</li>
+            </ul>
+        </li>
+        <li>
+            <div class="menu-wrapper">
+                <a>MENU</a>
+                <span>+</span>
+            </div>
+            <ul class="submenu">
+                <li>SUBMENU</li>
+                <li>SUBMENU</li>
+                <li>SUBMENU</li>
+            </ul>
+        </li>
+    </ul>
+    
+</body>
+</html>

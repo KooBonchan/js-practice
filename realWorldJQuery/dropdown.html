@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0 auto;
+            padding: 0;
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        header{
+            position: fixed;
+            top:0;
+            width:100vw;
+            min-width:400px;
+            height:50px;
+            display:flex;
+            justify-content: space-between;
+            background-color: #000;
+        }
+        header ul, header li{
+            background-color: #000;
+            color: #fff;
+            font-size:16px;
+            line-height:50px;
+        }
+        .logo.placeholder{
+            margin:0;
+            color: #fff;
+            width:100px;
+            height:50px;
+            line-height:50px;
+            text-align: center;
+        }
+        .nav{
+            margin:0;
+            display:flex;
+            gap: 10px;
+            background-color: #333;
+            padding: 0 10px;
+            justify-content: space-around;
+        }
+        .menu{
+            width: 120px;
+            text-align: center;
+        }
+        .menu>ul{
+            display: none;
+        }
+        .menu li{
+            width:inherit;
+            height: 50px;
+        }
+
+        .menu:hover, .submenu:hover{
+            background-color: #666;
+        }
+
+    </style>
+    <script src="../src/jquery-3.7.1.min.js"></script>
+    <script>
+        $(()=>{
+            $('.menu')
+                .mouseenter(function(){
+                    $(this).children('ul').slideDown();
+                    $(this).siblings().children('ul').fadeOut();
+                })
+                .mouseleave(function(){
+                    $('.menu>ul').fadeOut();
+                })
+
+        })
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo placeholder"><a href="#">LOGO</a></div>
+        <ul class="nav">
+            <li class="menu">
+                <a href="#">MENU</a>
+                <ul>
+                    <li class="submenu"><a href="#">SUBMENU</a></li>
+                    <li class="submenu"><a href="#">SUBMENU</a></li>
+                    <li class="submenu"><a href="#">SUBMENU</a></li>
+                </ul>
+            </li>
+            <li class="menu">
+                <a href="#">MENU</a>
+                <ul>
+                    <li class="submenu"><a href="#">SUBMENU</a></li>
+                    <li class="submenu"><a href="#">SUBMENU</a></li>
+                    <li class="submenu"><a href="#">SUBMENU</a></li>
+                </ul>
+            </li>
+            <li class="menu">
+                <a href="#">MENU</a>
+                <ul>
+                    <li class="submenu"><a href="#">SUBMENU</a></li>
+                    <li class="submenu"><a href="#">SUBMENU</a></li>
+                    <li class="submenu"><a href="#">SUBMENU</a></li>
+                </ul>
+            </li>
+        </ul>
+    </header>
+</body>
+</html>
